@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Countdown</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#0f172a,#1e40af,#2563eb);display:flex;justify-content:center;align-items:center;height:100vh;color:#fff}.container{text-align:center;padding:20px}h1{margin-bottom:25px}.countdown{display:flex;gap:15px;flex-wrap:wrap;justify-content:center}.box{width:100px;padding:20px;border-radius:15px;background:rgba(255,255,255,.12);box-shadow:0 10px 20px rgba(0,0,0,.3)}.num{font-size:40px;font-weight:bold;color:#00e5ff}.label{margin-top:10px;font-size:14px}
+</style></head><body>
+<div class="container"><h1>⏳ Hitung Mundur Acara</h1>
+<div class="countdown">
+<div class="box"><div id="days" class="num">00</div><div class="label">Hari</div></div>
+<div class="box"><div id="hours" class="num">00</div><div class="label">Jam</div></div>
+<div class="box"><div id="minutes" class="num">00</div><div class="label">Menit</div></div>
+<div class="box"><div id="seconds" class="num">00</div><div class="label">Detik</div></div>
+</div></div>
+<script>
+const target=new Date("2026-08-17T08:00:00").getTime();
+setInterval(()=>{const n=Date.now(),d=target-n;if(d<=0){document.body.innerHTML="<h1>🎉 Acara Dimulai 🎉</h1>";return;}
+days.textContent=Math.floor(d/86400000);
+hours.textContent=String(Math.floor((d%86400000)/3600000)).padStart(2,"0");
+minutes.textContent=String(Math.floor((d%3600000)/60000)).padStart(2,"0");
+seconds.textContent=String(Math.floor((d%60000)/1000)).padStart(2,"0");
+},1000);
+</script></body></html>
