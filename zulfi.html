@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    text-align:center;
+    color:#fff;
+    padding:20px;
+}
+
+h2{
+    margin-bottom:25px;
+    font-size:2rem;
+}
+
+.countdown{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.box{
+    width:110px;
+    padding:20px 10px;
+    border-radius:18px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 20px rgba(0,0,0,.3);
+    animation:float 2s ease-in-out infinite;
+}
+
+.box:nth-child(2){animation-delay:.2s;}
+.box:nth-child(3){animation-delay:.4s;}
+.box:nth-child(4){animation-delay:.6s;}
+
+.number{
+    font-size:2.5rem;
+    font-weight:bold;
+    color:#38bdf8;
+}
+
+.label{
+    margin-top:8px;
+    font-size:.9rem;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#cbd5e1;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-6px);}
+}
+
+@media(max-width:600px){
+    .box{
+        width:80px;
+        padding:15px 8px;
+    }
+    .number{
+        font-size:1.8rem;
+    }
+    h2{
+        font-size:1.4rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>⏳ Hitung Mundur Acara</h2>
+
+<div class="countdown">
+    <div class="box">
+        <div id="days" class="number">00</div>
+        <div class="label">Hari</div>
+    </div>
+
+    <div class="box">
+        <div id="hours" class="number">00</div>
+        <div class="label">Jam</div>
+    </div>
+
+    <div class="box">
+        <div id="minutes" class="number">00</div>
+        <div class="label">Menit</div>
+    </div>
+
+    <div class="box">
+        <div id="seconds" class="number">00</div>
+        <div class="label">Detik</div>
+    </div>
+</div>
+
+</div>
+
+<script>
+
+const target = new Date("Agustus 30, 2026 23:59:59").getTime();
+
+const timer = setInterval(function(){
+
+const now = new Date().getTime();
+const distance = target - now;
+
+if(distance < 0){
+    clearInterval(timer);
+    document.querySelector(".container").innerHTML =
+    return;
+}
+
+document.getElementById("days").innerHTML =
+Math.floor(distance/(1000*60*60*24));
+
+document.getElementById("hours").innerHTML =
+String(Math.floor((distance%(1000*60*60*24))/(1000*60*60))).padStart(2,"0");
+
+document.getElementById("minutes").innerHTML =
+String(Math.floor((distance%(1000*60*60))/(1000*60))).padStart(2,"0");
+
+document.getElementById("seconds").innerHTML =
+String(Math.floor((distance%(1000*60))/1000)).padStart(2,"0");
+
+},1000);
+
+</script>
+
+</body>
+</html>
