@@ -12,7 +12,7 @@
 <div class="box"><div id="seconds" class="num">00</div><div class="label">Detik</div></div>
 </div></div>
 <script>
-const target=new Date("2026-08-17T08:00:00").getTime();
+const target=new Date("2026-08-30T08:00:00").getTime();
 setInterval(()=>{const n=Date.now(),d=target-n;if(d<=0){document.body.innerHTML="<h1>🎉 Acara Dimulai 🎉</h1>";return;}
 days.textContent=Math.floor(d/86400000);
 hours.textContent=String(Math.floor((d%86400000)/3600000)).padStart(2,"0");
